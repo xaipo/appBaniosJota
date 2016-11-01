@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Banios Turisitico</title>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">   
+        <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css"/>
+        <script src="js/jquery-1.11.3.js"></script>
+        <script src="js/jquery.mobile-1.4.5.min.js"></script>
+        <style>
+            img {
+            width: 50%;
+            height: auto;
+            }
+        </style>
+        <style type="text/css">
+ 
+            div.ic_myCarousel {
+            margin: 20px auto 0 auto;
+            clear:right;
+            }
+            .infiniteCarousel {
+            box-shadow: 0px 3px 3px #333;
+            border: 3px solid #333;
+            }
+            .ic_left_nav, .ic_right_nav {
+            display: none;
+            }
+
+        </style>
+        <script>
+            var delay = 3000; //Your delay in milliseconds
+            setTimeout(function(){ window.location = "#principal"; }, delay);
+        </script>
+        <style>
+            #carrusel{float:left; width:601px; overflow:hidden; height:205px; position:relative; margin-top:20px;}
+            #carrusel .izquierda_flecha{position:absolute; left:10px; z-index:1; top:50%; margin-top:-9px;}
+            #carrusel .derecha_flecha{position:absolute; right:10px; z-index:1; top:50%; margin-top:-9px;}
+            .carrusel{width:4000px;left:0px; position:absolute; z-index:0}
+            .carrusel>div{
+            float: left;
+            height: 203px;
+            margin-right: 5px;
+            width: 195px;
+            text-align:center;
+            }
+            .carrusel .img_carrusel{cursor:pointer;}
+
+            #content {
+                float:left;
+                width:600px;
+                margin-bottom:40px;
+                margin:0px auto;
+            }
+
+            .product {
+                border:#CCCCCC 1px solid;
+            }
+        </style>
+<script>
+ var posicion = 0;
+ var imagenes = new Array();
+ $(document).ready(function() {
+   //alert(jQuery('.texto').html());
+   var numeroImatges = 6;
+   if(numeroImatges<=3){
+       $('.derecha_flecha').css('display','none');
+    $('.izquierda_flecha').css('display','none');
+   }
+
+     $('.izquierda_flecha').live('click',function(){
+         if(posicion>0){
+            posicion = posicion-1;
+        }else{
+            posicion = numeroImatges-3;
+        }
+        $(".carrusel").animate({"left": -($('#product_'+posicion).position().left)}, 600);
+        return false;
+     });
+
+     $('.izquierda_flecha').hover(function(){
+         $(this).css('opacity','0.5');
+     },function(){
+         $(this).css('opacity','1');
+     });
+
+     $('.derecha_flecha').hover(function(){
+         $(this).css('opacity','0.5');
+     },function(){
+         $(this).css('opacity','1');
+     });
+
+     $('.derecha_flecha').live('click',function(){
+        if(numeroImatges>posicion+3){
+            posicion = posicion+1;
+        }else{
+            posicion = 0;
+        }
+        $(".carrusel").animate({"left": -($('#product_'+posicion).position().left)}, 600);
+        return false;
+     });
+
+ });
+</script>
+
+
+    </head>
+    
+    <body>
+        
+        
+    <div data-role="page" id="welcome">
+            
+        
+        <header data-role="header" data-postition="fixed">
+
+                <h1>Bienvenido!</h1>
+
+        </header>
+        
+        <div class="ui-content" role="main">
+            <img src="img/logo1.svg" style="width: 100%;height: auto">
+            <br>
+            <center><img src="img/ring-alt.gif" style="width: 20%;height: auto"></center>
+        </div>
+
+
+        <div data-role="footer">
+            
+        </div>
+
+            
+    </div>
+        
+        
+        
+    <div data-role="page" id="principal">
+            
+            <header data-role="header" data-postition="fixed">
+                <a href="#principal" data-icon="home" data-role="button" title="Inicio" data-iconpos="notext"
+                   class="ui-btn-active">Inicio</a>
+                <h1>Menu</h1>
+                <a href="#configuracion" data-icon="gear" data-role="button" title="Configuracion" data-iconpos="notext">
+                    Configuracion</a>
+            </header>
+        
+        <div class="ui-content" role="main">
+            
+        <div data-role="navbar" data-theme='b'>
+        <ul>
+            <li><a href="#ciudad"><img src="img/Ciudad.png"/>
+                <br>Ciudad 
+            </a></li>
+
+            <li><a href="#mapa"><img src="img/Mapa1.png"/>
+                <br>Mapa
+            </a></li>
+
+            <li><a href="#hoteles"><img src="img/Hoteles.png">
+                <br>Hoteles
+            </a></li>
+                
+            <li><a href="#actividades"><img src="img/Actividades.png">
+                <br>Actividades
+            </a></li>
+
+            <li><a href="#restaurantes"><img src="img/Restaurantes.png">
+                <br>Restaurantes
+            </a></li>
+
+            <li><a href="#deportes"><img src="img/Deportes.png">
+                <br>Deportes
+            </a></li>
+            
+            
+        </ul>
+        </div>
+        
+        </div>
+
+        <nav data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+        <ul>
+            <center><h6>Siguenos!</h6></center>
+            <br>
+            <li><a href="https://www.facebook.com/jmunozcueva"><img src="img/facebook.png"/>
+            </a></li>
+            <li><a href="https://twitter.com/JotaMunio" ><img src="img/twitter.png"/>
+            </a></li>
+            <li><a href="https://www.instagram.com/jleo_89/" ><img src="img/instagram.png"/>
+            </a></li>
+            
+        </ul>
+        </div>
+        </nav>
+            
+    </div>
+    
+    
+    <div data-role="page" id="ciudad">
+            
+            <header data-role="header" data-postition="fixed">
+                <a href="#principal" data-icon="home" data-role="button" title="Inicio" data-iconpos="notext"
+                   class="ui-btn-active">Inicio</a>
+                <h1>Ciudad</h1>
+                <a href="#configuracion" data-icon="gear" data-role="button" title="Configuracion" data-iconpos="notext">
+                    Configuracion</a>
+            </header>
+        
+        <div class="ui-content" role="main">
+            
+            <div id="carrusel">
+            <a href="#" class="izquierda_flecha"><img src="images/flecha_01.png" /></a>
+            <a href="#" class="derecha_flecha"><img src="images/flecha_02.png" /></a>
+            <div class="carrusel">
+        <div class="product" id="product_0">
+            <img class="img_carrusel" src="gallery/01.jpg" width="195px" height="100px" />
+            <p>Titulo 1</p>
+            <p>165.00 €</p>
+        </div>
+        <div class="product" id="product_1">
+             <img class="img_carrusel" src="gallery/02.jpg" width="195px" height="100px" />
+            <p>Titulo 2</p>
+              <p>100.00 €</p>
+        </div>
+        <div class="product" id="product_2">
+            <img class="img_carrusel" src="gallery/03.jpg" width="195px" height="100px" />
+            <p>Titulo 3</p>
+            <p>250.00 €</p>
+        </div>
+        <div class="product" id="product_3">
+            <img class="img_carrusel" src="gallery/01.jpg" width="195px" height="100px" />
+            <p>Titulo 4</p>
+            <p>75.00 €</p>
+        </div>
+        <div class="product" id="product_4">
+            <img class="img_carrusel" src="gallery/02.jpg" width="195px" height="100px" />
+            <p>Titulo 5</p>
+            <p>65.00 €</p>
+        </div>
+        <div class="product" id="product_5">
+            <img class="img_carrusel" src="gallery/03.jpg" width="195px" height="100px" />
+            <p>Titulo 6</p>
+            <p>40.00 €</p>
+        </div>
+    </div>
+</div>
+            
+            <p>
+                
+            Baños de Agua Santa se encuentra en la provincia de Tungurahua solamente a 180 Km de Quito y 35 Km de Ambato.
+
+            La ciudad turística de está ubicado en un valle con cascadas y aguas termales a lado del volcán Tungurahua con una altura de 5.016 metros.
+
+            Baños tiene una población con 20.000 habitantes, esta a una altura de 1.826 metros y posee temperaturas promedios de 20°C.
+
+            El Cantón les invita a descansar en sus piscinas de aguas termales y spas, aventura para toda la familia o deportes extremos como rafting, escaladas, canyoning, canopy, trekking, mountain biking o puenting (bungee jumping).
+            
+            </p>
+        </div>
+
+
+            
+    </div>
+        
+        
+    <div data-role="page" id="mapa">
+            
+            <header data-role="header" data-postition="fixed">
+                <a href="#principal" data-icon="home" data-role="button" title="Inicio" data-iconpos="notext"
+                   class="ui-btn-active">Inicio</a>
+                <h1>Mapa</h1>
+                <a href="#configuracion" data-icon="gear" data-role="button" title="Configuracion" data-iconpos="notext">
+                    Configuracion</a>
+            </header>
+        
+        <div class="ui-content" role="main">
+            <iframe src="https://www.google.com/maps/d/embed?mid=1Vi3h0PfWgExgXIE6iHDIUBv9Y8k" width="100%" height="480"></iframe>
+        </div>
+
+            
+    </div>
+        
+
+    <div data-role="page" id="hoteles">
+            
+            <header data-role="header" data-postition="fixed">
+                <a href="#principal" data-icon="home" data-role="button" title="Inicio" data-iconpos="notext"
+                   class="ui-btn-active">Inicio</a>
+                <h1>Hoteles</h1>
+                <a href="#configuracion" data-icon="gear" data-role="button" title="Configuracion" data-iconpos="notext">
+                    Configuracion</a>
+            </header>
+        
+        <div class="ui-content" role="main">
+        
+        </div>
+
+        <nav data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#eventos">Eventos</a>
+                <li><a href="#noticias">Noticias</a>
+                <li><a href="#notas">Notas</a>
+            </ul>
+        </div>
+        </nav>
+            
+    </div>
+       
+        
+    <div data-role="page" id="actividades">
+            
+            <header data-role="header" data-postition="fixed">
+                <a href="#principal" data-icon="home" data-role="button" title="Inicio" data-iconpos="notext"
+                   class="ui-btn-active">Inicio</a>
+                <h1>Actividades</h1>
+                <a href="#configuracion" data-icon="gear" data-role="button" title="Configuracion" data-iconpos="notext">
+                    Configuracion</a>
+            </header>
+        
+        <div class="ui-content" role="main">
+        
+        </div>
+
+        <nav data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#eventos">Eventos</a>
+                <li><a href="#noticias">Noticias</a>
+                <li><a href="#notas">Notas</a>
+            </ul>
+        </div>
+        </nav>
+            
+    </div>
+       
+
+    <div data-role="page" id="restaurantes">
+            
+            <header data-role="header" data-postition="fixed">
+                <a href="#principal" data-icon="home" data-role="button" title="Inicio" data-iconpos="notext"
+                   class="ui-btn-active">Inicio</a>
+                <h1>Restaurantes</h1>
+                <a href="#configuracion" data-icon="gear" data-role="button" title="Configuracion" data-iconpos="notext">
+                    Configuracion</a>
+            </header>
+        
+        <div class="ui-content" role="main">
+        
+        </div>
+
+        <nav data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#eventos">Eventos</a>
+                <li><a href="#noticias">Noticias</a>
+                <li><a href="#notas">Notas</a>
+            </ul>
+        </div>
+        </nav>
+            
+    </div>
+        
+
+    <div data-role="page" id="deportes">
+            
+            <header data-role="header" data-postition="fixed">
+                <a href="#principal" data-icon="home" data-role="button" title="Inicio" data-iconpos="notext"
+                   class="ui-btn-active">Inicio</a>
+                <h1>Deportes</h1>
+                <a href="#configuracion" data-icon="gear" data-role="button" title="Configuracion" data-iconpos="notext">
+                    Configuracion</a>
+            </header>
+        
+        <div class="ui-content" role="main">
+        
+        </div>
+
+        <nav data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#eventos">Eventos</a>
+                <li><a href="#noticias">Noticias</a>
+                <li><a href="#notas">Notas</a>
+            </ul>
+        </div>
+        </nav>
+            
+    </div>
+        
+        
+    <div data-role="page" id="emergencias">
+            
+            <header data-role="header" data-postition="fixed">
+                <a href="#principal" data-icon="home" data-role="button" title="Inicio" data-iconpos="notext"
+                   class="ui-btn-active">Inicio</a>
+                <h1>Emergencias</h1>
+                <a href="#configuracion" data-icon="gear" data-role="button" title="Configuracion" data-iconpos="notext">
+                    Configuracion</a>
+            </header>
+        
+        <div class="ui-content" role="main">
+        
+        </div>
+
+        <nav data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#eventos">Eventos</a>
+                <li><a href="#noticias">Noticias</a>
+                <li><a href="#notas">Notas</a>
+            </ul>
+        </div>
+        </nav>
+            
+    </div>
+
+        
+    <div data-role="page" id="review">
+            
+            <header data-role="header" data-postition="fixed">
+                <a href="#principal" data-icon="home" data-role="button" title="Inicio" data-iconpos="notext"
+                   class="ui-btn-active">Inicio</a>
+                <h1>Review</h1>
+                <a href="#configuracion" data-icon="gear" data-role="button" title="Configuracion" data-iconpos="notext">
+                    Configuracion</a>
+            </header>
+        
+        <div class="ui-content" role="main">
+        
+        </div>
+
+        <nav data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#eventos">Eventos</a>
+                <li><a href="#noticias">Noticias</a>
+                <li><a href="#notas">Notas</a>
+            </ul>
+        </div>
+        </nav>
+            
+    </div>
+    </body>
+    
+</html>

@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Banios Turisitico</title>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">   
+        <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css"/>
+        <script src="js/jquery-1.11.3.js"></script>
+        <script src="js/jquery.mobile-1.4.5.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <style>
+            .carousel-inner > .item > img,
+            .carousel-inner > .item > a > img {
+                width: 70%;
+                margin: auto;
+            }
+        </style>
+        <style>
+            img {
+                width: 50%;
+                height: auto;
+            }  
+
+        </style>
+        <style type="text/css">
+
+            div.ic_myCarousel {
+                margin: 20px auto 0 auto;
+                clear:right;
+            }
+            .infiniteCarousel {
+                box-shadow: 0px 3px 3px #333;
+                border: 3px solid #333;
+            }
+            .ic_left_nav, .ic_right_nav {
+                display: none;
+            }
+
+        </style>
+        <script>
+            var delay = 6000; //Your delay in milliseconds
+            setTimeout(function(){ window.location = "landingPage.html"; }, delay);
+        </script>
+        <style>
+            #carrusel{float:left; width:601px; overflow:hidden; height:205px; position:relative; margin-top:20px;}
+            #carrusel .izquierda_flecha{position:absolute; left:10px; z-index:1; top:50%; margin-top:-9px;}
+            #carrusel .derecha_flecha{position:absolute; right:10px; z-index:1; top:50%; margin-top:-9px;}
+            .carrusel{width:4000px;left:0px; position:absolute; z-index:0}
+            .carrusel>div{
+                float: left;
+                height: 203px;
+                margin-right: 5px;
+                width: 195px;
+                text-align:center;
+            }
+            .carrusel .img_carrusel{cursor:pointer;}
+
+            #content {
+                float:left;
+                width:600px;
+                margin-bottom:40px;
+                margin:0px auto;
+            }
+
+            .product {
+                border:#CCCCCC 1px solid;
+            }
+        </style>
+        <script>
+            var posicion = 0;
+            var imagenes = new Array();
+            $(document).ready(function() {
+                //alert(jQuery('.texto').html());
+                var numeroImatges = 6;
+                if(numeroImatges<=3){
+                    $('.derecha_flecha').css('display','none');
+                    $('.izquierda_flecha').css('display','none');
+                }
+
+                $('.izquierda_flecha').live('click',function(){
+                    if(posicion>0){
+                        posicion = posicion-1;
+                    }else{
+                        posicion = numeroImatges-3;
+                    }
+                    $(".carrusel").animate({"left": -($('#product_'+posicion).position().left)}, 600);
+                    return false;
+                });
+
+                $('.izquierda_flecha').hover(function(){
+                    $(this).css('opacity','0.5');
+                },function(){
+                    $(this).css('opacity','1');
+                });
+
+                $('.derecha_flecha').hover(function(){
+                    $(this).css('opacity','0.5');
+                },function(){
+                    $(this).css('opacity','1');
+                });
+
+                $('.derecha_flecha').live('click',function(){
+                    if(numeroImatges>posicion+3){
+                        posicion = posicion+1;
+                    }else{
+                        posicion = 0;
+                    }
+                    $(".carrusel").animate({"left": -($('#product_'+posicion).position().left)}, 600);
+                    return false;
+                });
+
+            });
+        </script>
+
+        <style type="text/css">
+            body {
+                background: url(img/fondo1.png);
+                background-repeat:repeat-y;
+                background-position:center center;
+                background-attachment:scroll;
+                background-size:100% 100%;
+            }
+            .ui-page {
+                background: transparent;
+            }
+            .ui-content{
+                background: transparent;
+            }
+
+        </style>
+
+
+    </head>
+
+    <body>
+
+        <div data-role="page" id="welcome">
+
+            <header data-role="header" data-postition="fixed">
+
+                <h1>Bienvenido!</h1>
+
+            </header>
+
+            <div class="ui-content" role="main">
+                <img src="img/logo1.svg" style="width: 100%;height: auto">
+                <br>
+                <center><img src="img/ring-alt.gif" style="width: 20%;height: auto"></center>
+            </div>
+
+            <div data-role="footer">
+
+            </div>
+
+        </div>
+
+        <div data-role="page" id="principal">
+
+            <header data-role="header" data-postition="fixed">
+                <a href="#principal" data-icon="home" data-role="button" title="Inicio" data-iconpos="notext"
+                   class="ui-btn-active">Inicio</a>
+                <h1>Menu</h1>
+                <a href="#configuracion" data-icon="gear" data-role="button" title="Configuracion" data-iconpos="notext">
+                    Configuracion</a>
+            </header>
+
+            <div class="ui-content" role="main">
+
+                <div data-role="navbar" data-theme='b' >
+
+                    <ul>
+                        <li><a href="#ciudad" style="background-color:transparent"><img src="img/church1.svg"/>
+                            <br><p style="color:white !important">Ciudad</p> 
+                            </a></li>
+
+                        <li><a href="#mapa" style="background-color:transparent"><img src="img/ubication2.svg"/>
+                            <br><p style="color:white !important">Mapa</p>
+                            </a></li>
+
+                        <li><a href="#hoteles" style="background-color:transparent"><img src="img/hotel2.svg">
+                            <br><p style="color:white !important">Hoteles</p>
+                            </a></li>
+
+                        <li><a href="#actividades" style="background-color:transparent"><img src="img/fire2.svg">
+                            <br><p style="color:white !important">Actividades</p>
+                            </a></li>
+
+                        <li><a href="#restaurantes" style="background-color:transparent"><img src="img/restaurant2.svg">
+                            <br><p style="color:white !important">Restaurantes</p>
+                            </a></li>
+
+                        <li><a href="#deportes" style="background-color:transparent"><img src="img/mountains2.svg">
+                            <br><p style="color:white !important">Deportes</p>
+                            </a></li>
+
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <nav data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <center><h6>Siguenos!</h6></center>
+                        <br>
+                        <li><a href="https://www.facebook.com/jmunozcueva"><img src="img/facebook.png"/>
+                            </a></li>
+                        <li><a href="https://twitter.com/JotaMunio" ><img src="img/twitter.png"/>
+                            </a></li>
+                        <li><a href="https://www.instagram.com/jleo_89/" ><img src="img/instagram.png"/>
+                            </a></li>
+
+                    </ul>
+                </div>
+            </nav>
+
+        </div>
+
+        <div data-role="page" id="ciudad" >
+
+            <header data-role="header" data-postition="fixed">
+                <a href="#principal" data-icon="home" data-role="button" title="Inicio" data-iconpos="notext" class="ui-btn-active">Inicio</a>
+                <h1>Ciudad</h1>
+                <a href="#configuracion" data-icon="gear" data-role="button" title="Configuracion" data-iconpos="notext">Configuracion</a>
+            </header>
+
+            <div class="ui-content" role="main">
+                <div class="container">
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <div id="myCarousel" class="carousel slide" data-ride="carousel" >
+                        <!-- Indicators -->
+                        <!--<ol class="carousel-indicators">
+<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+<li data-target="#myCarousel" data-slide-to="1"></li>
+<li data-target="#myCarousel" data-slide-to="2"></li>
+<li data-target="#myCarousel" data-slide-to="3"></li>
+<li data-target="#myCarousel" data-slide-to="4"></li>
+<li data-target="#myCarousel" data-slide-to="5"></li>
+<li data-target="#myCarousel" data-slide-to="6"></li>
+<li data-target="#myCarousel" data-slide-to="7"></li>
+<li data-target="#myCarousel" data-slide-to="8"></li>
+<li data-target="#myCarousel" data-slide-to="9"></li>
+<li data-target="#myCarousel" data-slide-to="10"></li>
+<li data-target="#myCarousel" data-slide-to="11"></li>
+<li data-target="#myCarousel" data-slide-to="12"></li> 
+</ol>-->
+
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner" role="listbox">
+                            <div class="item active">
+                                <img src="img/ciudad/slide1.jpg" alt="Chania">
+                                <div class="carousel-caption">
+                                    <h5></h5>
+                                    <p></p>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <img src="img/ciudad/slide2.jpg" alt="Chania">
+                                <div class="carousel-caption">
+                                    <h5></h5>
+                                    <p></p>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <img src="img/ciudad/slide3.jpg" alt="Flower">
+                                <div class="carousel-caption">
+                                    <h5></h5>
+                                    <p></p>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <img src="img/ciudad/slide4.jpg" alt="Flower">
+                                <div class="carousel-caption">
+                                    <h5></h5>
+                                    <p></p>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <img src="img/ciudad/slide5.jpg" alt="Flower">
+                                <div class="carousel-caption">
+                                    <h5></h5>
+                                    <p></p>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <img src="img/ciudad/slide6.jpg" alt="Flower">
+                                <div class="carousel-caption">
+                                    <h5></h5>
+                                    <p></p>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <img src="img/ciudad/slide7.jpg" alt="Flower">
+                                <div class="carousel-caption">
+                                    <h5></h5>
+                                    <p></p>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <img src="img/ciudad/slide8.jpg" alt="Flower">
+                                <div class="carousel-caption">
+                                    <h5></h5>
+                                    <p></p>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <img src="img/ciudad/slide14.jpg" alt="Flower">
+                                <div class="carousel-caption">
+                                    <h5></h5>
+                                    <p></p>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <img src="img/ciudad/slide11.jpg" alt="Flower">
+                                <div class="carousel-caption">
+                                    <h5></h5>
+                                    <p></p>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <img src="img/ciudad/slide12.jpg" alt="Flower">
+                                <div class="carousel-caption">
+                                    <h5></h5>
+                                    <p></p>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <img src="img/ciudad/slide13.jpg" alt="Flower">
+                                <div class="carousel-caption">
+                                    <h5></h5>
+                                    <p></p>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <img src="img/ciudad/slide10.jpg" alt="Flower">
+                                <div class="carousel-caption">
+                                    <h5>Baños de Agua Santa</h5>
+                                    <p>Un pedaso de cielo!</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Left and right controls -->
+                        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+        <div data-role="page" id="mapa">
+
+            <header data-role="header" data-postition="fixed">
+                <a href="#principal" data-icon="home" data-role="button" title="Inicio" data-iconpos="notext"
+                   class="ui-btn-active">Inicio</a>
+                <h1>Mapa</h1>
+                <a href="#configuracion" data-icon="gear" data-role="button" title="Configuracion" data-iconpos="notext">
+                    Configuracion</a>
+            </header>
+
+            <div class="ui-content" role="main">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9486.62854483849!2d-78.4298420686579!3d-1.394906942270099!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d3912260082689%3A0xdb67c8f2fcd8aee9!2sBa%C3%B1os+de+Agua+Santa!5e0!3m2!1ses!2sec!4v1476895196438" width="100%" height="480"></iframe>
+            </div>
+
+
+        </div>
+
+
+        <div data-role="page" id="hoteles">
+
+            <header data-role="header" data-postition="fixed">
+                <a href="#principal" data-icon="home" data-role="button" title="Inicio" data-iconpos="notext"
+                   class="ui-btn-active">Inicio</a>
+                <h1>Hoteles</h1>
+                <a href="#configuracion" data-icon="gear" data-role="button" title="Configuracion" data-iconpos="notext">
+                    Configuracion</a>
+            </header>
+
+            <div class="ui-content" role="main">
+
+            </div>
+
+            <nav data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#eventos">Eventos</a>
+                        <li><a href="#noticias">Noticias</a>
+                        <li><a href="#notas">Notas</a>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="ui-content" role="main">
+                <div class="container">
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <div id="myCarouselHoteles" class="carousel slide" data-ride="carousel" >
+                        <!-- Indicators -->
+                        <!--<ol class="carousel-indicators">
+<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+<li data-target="#myCarousel" data-slide-to="1"></li>
+<li data-target="#myCarousel" data-slide-to="2"></li>
+<li data-target="#myCarousel" data-slide-to="3"></li>
+<li data-target="#myCarousel" data-slide-to="4"></li>
+<li data-target="#myCarousel" data-slide-to="5"></li>
+<li data-target="#myCarousel" data-slide-to="6"></li>
+<li data-target="#myCarousel" data-slide-to="7"></li>
+<li data-target="#myCarousel" data-slide-to="8"></li>
+<li data-target="#myCarousel" data-slide-to="9"></li>
+<li data-target="#myCarousel" data-slide-to="10"></li>
+<li data-target="#myCarousel" data-slide-to="11"></li>
+<li data-target="#myCarousel" data-slide-to="12"></li> 
+</ol>-->
+
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner" role="listbox">
+                            <div class="item active">
+                                <center><h5 style="color:white">ALIZAMAY</h5></center>
+                                <img src="img/hoteles/alisamay.PNG" alt="Chania">
+                                <div>
+                                    <p style="color:white">Contamos habitaciones con telefono, wifi, television, baño privado y balcon, atendemos las 24 horas, serviciod e lavanderia, desayuno, parqueadero, piscinas para adultos y niños entre otros.</p>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <center><h5 style="color:white">DONDE MARCELO</h5></center>
+                                <img src="img/hoteles/dondeMarcelo.PNG" alt="Chania">
+                                <div>
+                                    <p style="color:white">Ofrece a sus distinguidos clientes habitaciones Imperiales de elegante diseño, Sauna, Turco,  Bar- Restaurant, así  como también le ayudamos a armar sus tours, caminatas  y  deportes de aventura en los diferentes atractivos naturales  de la ciudad, todo esto de acuerdo a su afición, presupuesto y habilidad física.</p>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <center><h5 style="color:white">ELVITA HOTEL SPA</h5></center>
+                                <img src="img/hoteles/elvita.PNG" alt="Flower">
+                                <div>
+                                    <p style="color:white">Ofrecemos habitaciones simple, matrimociales y triples con baño privado y TV Led con cable.</p>
+                                    <p style="color:white">Tarifa por noche es de $20(Desayuno Opcinal) y durante Feriados $30 (Desayuno Incluido). Descuentos para grupos.</p>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <center><h5 style="color:white">JARDINES DE CHAMACA</h5></center>
+                                <img src="img/hoteles/jardinesChamana.PNG" alt="Flower">
+                                <div>
+                                    <p style="color:white">Un lugar ideal para encontrar paz y tranquilidad, disfrutar de una variedad gastronómica exquisita, juegos para toda la familia, vista al Volcán Tungurahua y mucho más.</p>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <center><h5 style="color:white">LUNA RUNTUN</h5></center>
+                                <img src="img/hoteles/lunaRuntun.PNG" alt="Flower">
+                                <div>
+                                    <p style="color:white">Su entorno es único, rodeado de montañas, 70 cascadas y agua termal. El clima es primaveral, con una temperatura promedio de 17 - 25°C todo el año.</p>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <center><h5 style="color:white">MANANTIAL DE VIDA</h5></center>
+                                <img src="img/hoteles/manatialVida.PNG" alt="Flower">
+                                <div>
+                                    <p style="color:white">Somos una empresa Hotelera nueva, decididos a brindarte una estadía acogedora, y de relajación, ya que por su ubicación privilegiada donde el ruido de las aves, rio y las actividades realizadas por gente profesional, harán que disfrutes de agradables momentos.</p>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <center><h5 style="color:white">SAMARI</h5></center>
+                                <img src="img/hoteles/samari.PNG" alt="Flower">
+                                <div>
+                                    <p style="color:white">Hotel con 37 espectaculares habitaciones, Spa con piscina cubierta y temperada, salas de convenciones para 280 personas, restaurante gourmet, bares interiores y exteriores, taberna original, variedad de actividades y aventuras inolvidables, placeres que le sugerirán quedarse.</p>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <center><h5 style="color:white">SANGAY SPA</h5></center>
+                                <img src="img/hoteles/sangay.PNG" alt="Flower">
+                                <div>
+                                    <p style="color:white">Está situado junto a una impresionante cascada de 80 metros y en la calle de los más famosos baños termales de la ciudad de Baños, que dan propiedades estimulantes de salud.</p>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <center><h5 style="color:white">VOLCANO</h5></center>
+                                <img src="img/hoteles/volcano.PNG" alt="Flower">
+                                <div>
+                                    <p style="color:white">Se encuentra ubicado en una zona privilegiada de la ciudad de Baños con una vista espectacular de la cascada de la Vírgen y de sus entornos.</p>
+                                </div>
+                            </div>
+
+                            <!--<div class="item">
+<img src="img/ciudad/slide12.jpg" alt="Flower">
+<div class="carousel-caption">
+<h3>Baños de Agua Santa</h3>
+<h5>Un pedaso de cielo!</h5>
+</div>
+</div>
+
+<div class="item">
+<img src="img/ciudad/slide13.jpg" alt="Flower">
+<div class="carousel-caption">
+<h3>Baños de Agua Santa</h3>
+<h5>Un pedaso de cielo!</h5>
+</div>
+</div>
+
+<div class="item">
+<img src="img/ciudad/slide10.jpg" alt="Flower">
+<div class="carousel-caption">
+<h3>Baños de Agua Santa</h3>
+<h5>Un pedaso de cielo!</h5>
+</div>
+</div>-->
+                        </div>
+
+                        <!-- Left and right controls -->
+                        <a class="left carousel-control" href="#myCarouselHoteles" role="button" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#myCarouselHoteles" role="button" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+        <div data-role="page" id="actividades">
+
+            <header data-role="header" data-postition="fixed">
+                <a href="#principal" data-icon="home" data-role="button" title="Inicio" data-iconpos="notext"
+                   class="ui-btn-active">Inicio</a>
+                <h1>Actividades</h1>
+                <a href="#configuracion" data-icon="gear" data-role="button" title="Configuracion" data-iconpos="notext">
+                    Configuracion</a>
+            </header>
+
+            <div class="ui-content" role="main">
+                <script>window.twttr = (function(d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0],
+                            t = window.twttr || {};
+                        if (d.getElementById(id)) return t;
+                        js = d.createElement(s);
+                        js.id = id;
+                        js.src = "https://platform.twitter.com/widgets.js";
+                        fjs.parentNode.insertBefore(js, fjs);
+                        t._e = [];
+                        t.ready = function(f) {
+                            t._e.push(f);
+                        };
+
+                        return t;
+                    }(document, "script", "twitter-wjs"));</script>
+
+            </div>
+
+
+            <div class="ui-content" role="main">
+                <div class="container">
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <div id="myCarouselActividades" class="carousel slide" data-ride="carousel" >
+                        <!-- Indicators -->
+                        <!--<ol class="carousel-indicators">
+<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+<li data-target="#myCarousel" data-slide-to="1"></li>
+<li data-target="#myCarousel" data-slide-to="2"></li>
+<li data-target="#myCarousel" data-slide-to="3"></li>
+<li data-target="#myCarousel" data-slide-to="4"></li>
+<li data-target="#myCarousel" data-slide-to="5"></li>
+<li data-target="#myCarousel" data-slide-to="6"></li>
+<li data-target="#myCarousel" data-slide-to="7"></li>
+<li data-target="#myCarousel" data-slide-to="8"></li>
+<li data-target="#myCarousel" data-slide-to="9"></li>
+<li data-target="#myCarousel" data-slide-to="10"></li>
+<li data-target="#myCarousel" data-slide-to="11"></li>
+<li data-target="#myCarousel" data-slide-to="12"></li> 
+</ol>-->
+
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner" role="listbox">
+                            <div class="item active">
+                                <center><h5 style="color:white">Canopy</h5></center>
+                                <img src="img/actividades/canopy.PNG" alt="Chania">
+                                <div>
+                                    <p style="color:white">Permite deslizarse desde la parte superior hacia abajo suspendido en un cable generalmente de acero inoxidable que cruza una quebrada, un río o entre las copas de los árboles. </p>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <center><h5 style="color:white">Canyoning</h5></center>
+                                <img src="img/actividades/canyoning.PNG" alt="Chania">
+                                <div>
+                                    <p style="color:white">es un deporte que se practica en cascadas, básicamente es el descenso de las mismas a través de una cuerda sujetada a un arnés y otros equipos especiales.</p>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <center><h5 style="color:white">Downhill</h5></center>
+                                <img src="img/actividades/downhill.PNG" alt="Flower">
+                                <div>                                    
+                                    <p style="color:white">Es un descenso de una montaña en bicicleta, hay varias pistas muy técnicas para la práctica de este deporte, y han sido escenario de varias competencias a nivel Nacional e Internacional.</p>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <center><h5 style="color:white">Puenting</h5></center>
+                                <img src="img/actividades/puenting.PNG" alt="Flower">
+                                <div>                                    
+                                    <p style="color:white">Es un deporte que se lo practica en los puentes, se lo realiza con cuerdas que se encuentran atadas a un lado del puente y consiste en saltar del otro extremo del mismo cayendo unos segundos en caída libre y luego en movimientos tipo columpio.</p>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <center><h5 style="color:white">Rafting</h5></center>
+                                <img src="img/actividades/rafting.PNG" alt="Flower">
+                                <div>                                    
+                                    <p style="color:white">Se lo realiza en el río Pastaza en el sector oriental de la ciudad, partiendo desde San Francisco, o desde el sector de La Penal (Río Negro); generalemnte se lo realiza en 2 tramos del río con distinto grado o nivel de dificultad que va entre III a V.</p>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <center><h5 style="color:white">Spa</h5></center>
+                                <img src="img/actividades/spa.PNG" alt="Flower">
+                                <div>                                    
+                                    <p style="color:white">Usted podrá escoger de una gama de  80 diferentes tratamientos, como: fango terapia, baños de vapor, depilaciones, aroma terapia,  hidratación con miel o chocolate, etc. Que le renovarán su vitalidad y espiritualidad  y le llenarán de renovadas energías.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Left and right controls -->
+                        <a class="left carousel-control" href="#myCarouselActividades" role="button" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#myCarouselActividades" role="button" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+            <nav data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#eventos">Eventos</a>
+                        <li><a href="#noticias">Noticias</a>
+                        <li><a href="#notas">Notas</a>
+                    </ul>
+                </div>
+            </nav>
+
+        </div>
+
+
+        <div data-role="page" id="restaurantes">
+
+            <header data-role="header" data-postition="fixed">
+                <a href="#principal" data-icon="home" data-role="button" title="Inicio" data-iconpos="notext"
+                   class="ui-btn-active">Inicio</a>
+                <h1>Restaurantes</h1>
+                <a href="#configuracion" data-icon="gear" data-role="button" title="Configuracion" data-iconpos="notext">
+                    Configuracion</a>
+            </header>
+
+            <div class="ui-content" role="main">
+
+            </div>
+
+            <nav data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#eventos">Eventos</a>
+                        <li><a href="#noticias">Noticias</a>
+                        <li><a href="#notas">Notas</a>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="ui-content" role="main">
+                <div class="container">
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <div id="myCarouselRestaurantes" class="carousel slide" data-ride="carousel" >
+                        <!-- Indicators -->
+                        <!--<ol class="carousel-indicators">
+<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+<li data-target="#myCarousel" data-slide-to="1"></li>
+<li data-target="#myCarousel" data-slide-to="2"></li>
+<li data-target="#myCarousel" data-slide-to="3"></li>
+<li data-target="#myCarousel" data-slide-to="4"></li>
+<li data-target="#myCarousel" data-slide-to="5"></li>
+<li data-target="#myCarousel" data-slide-to="6"></li>
+<li data-target="#myCarousel" data-slide-to="7"></li>
+<li data-target="#myCarousel" data-slide-to="8"></li>
+<li data-target="#myCarousel" data-slide-to="9"></li>
+<li data-target="#myCarousel" data-slide-to="10"></li>
+<li data-target="#myCarousel" data-slide-to="11"></li>
+<li data-target="#myCarousel" data-slide-to="12"></li> 
+</ol>-->
+
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner" role="listbox">
+                            <div class="item active">
+                                <img src="img/restaurantes/cafeCielo.PNG" alt="Chania">
+                                <div class="carousel-caption">
+                                    <h5></h5>
+                                    <p></p>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <img src="img/restaurantes/jotaJota.PNG" alt="Chania">
+                                <div class="carousel-caption">
+                                    <h5></h5>
+                                    <p></p>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <img src="img/restaurantes/lePetit.PNG" alt="Flower">
+                                <div class="carousel-caption">
+                                    <h5></h5>
+                                    <p></p>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <img src="img/restaurantes/mercedes.PNG" alt="Flower">
+                                <div class="carousel-caption">
+                                    <h3></h3>
+                                    <h5></h5>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <img src="img/restaurantes/ricoPan.PNG" alt="Flower">
+                                <div class="carousel-caption">
+                                    <h3></h3>
+                                    <h5></h5>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <img src="img/restaurantes/runtun.PNG" alt="Flower">
+                                <div class="carousel-caption">
+                                    <h5></h5>
+                                    <h7></h7>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Left and right controls -->
+                        <a class="left carousel-control" href="#myCarouselRestaurantes" role="button" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#myCarouselRestaurantes" role="button" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+        <div data-role="page" id="deportes">
+
+            <header data-role="header" data-postition="fixed">
+                <a href="#principal" data-icon="home" data-role="button" title="Inicio" data-iconpos="notext"
+                   class="ui-btn-active">Inicio</a>
+                <h1>Deportes</h1>
+                <a href="#configuracion" data-icon="gear" data-role="button" title="Configuracion" data-iconpos="notext">
+                    Configuracion</a>
+            </header>
+
+            <div class="ui-content" role="main">
+
+            </div>
+
+            <nav data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#eventos">Eventos</a>
+                        <li><a href="#noticias">Noticias</a>
+                        <li><a href="#notas">Notas</a>
+                    </ul>
+                </div>
+            </nav>
+
+        </div>
+
+
+        <div data-role="page" id="emergencias">
+
+            <header data-role="header" data-postition="fixed">
+                <a href="#principal" data-icon="home" data-role="button" title="Inicio" data-iconpos="notext"
+                   class="ui-btn-active">Inicio</a>
+                <h1>Emergencias</h1>
+                <a href="#configuracion" data-icon="gear" data-role="button" title="Configuracion" data-iconpos="notext">
+                    Configuracion</a>
+            </header>
+
+            <div class="ui-content" role="main">
+
+            </div>
+
+            <nav data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#eventos">Eventos</a>
+                        <li><a href="#noticias">Noticias</a>
+                        <li><a href="#notas">Notas</a>
+                    </ul>
+                </div>
+            </nav>
+
+        </div>
+
+
+        <div data-role="page" id="review">
+
+            <header data-role="header" data-postition="fixed">
+                <a href="#principal" data-icon="home" data-role="button" title="Inicio" data-iconpos="notext"
+                   class="ui-btn-active">Inicio</a>
+                <h1>Review</h1>
+                <a href="#configuracion" data-icon="gear" data-role="button" title="Configuracion" data-iconpos="notext">
+                    Configuracion</a>
+            </header>
+
+            <div class="ui-content" role="main">
+
+            </div>
+
+            <nav data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#eventos">Eventos</a>
+                        <li><a href="#noticias">Noticias</a>
+                        <li><a href="#notas">Notas</a>
+                    </ul>
+                </div>
+            </nav>
+
+        </div>
+    </body>
+
+</html>
